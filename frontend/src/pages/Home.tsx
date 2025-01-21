@@ -302,7 +302,7 @@ function Home() {
         
         {/* Gemini API Key */}
         <div className="mb-6">
-          <h3 className="text-md font-medium mb-2">Gemini API Key</h3>
+          <h3 className="text-md font-medium mb-2">Gemini API Key (need this to run)</h3>
           <text className="block mb-4">
             You can set it up completely free on&nbsp;
             <a 
@@ -337,7 +337,7 @@ function Home() {
 
         {/* GPT API Key */}
         <div>
-          <h3 className="text-md font-medium mb-2">GPT API Key</h3>
+          <h3 className="text-md font-medium mb-2">GPT API Key (use it for 10 or more profiles) </h3>
           <text className="block mb-4">
             You can get your API key from&nbsp;
             <a 
