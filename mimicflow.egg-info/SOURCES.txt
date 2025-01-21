@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+mimicflow/__init__.py
+mimicflow.egg-info/PKG-INFO
+mimicflow.egg-info/SOURCES.txt
+mimicflow.egg-info/dependency_links.txt
+mimicflow.egg-info/requires.txt
+mimicflow.egg-info/top_level.txt
+tests/test_mimicflow.py

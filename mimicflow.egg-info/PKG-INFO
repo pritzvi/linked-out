@@ -1,0 +1,130 @@
+Metadata-Version: 2.2
+Name: mimicflow
+Version: 0.1
+Summary: Automate your workflow by recording a video
+Author: Prithvi Bale
+License: Apache-2.0
+Project-URL: Homepage, https://github.com/pritzvi/mimicflow
+Project-URL: Changelog, https://github.com/pritzvi/mimicflow/releases
+Project-URL: Issues, https://github.com/pritzvi/mimicflow/issues
+Project-URL: CI, https://github.com/pritzvi/mimicflow/actions
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aioconsole>=0.8.1
+Requires-Dist: fastapi>=0.115.6
+Requires-Dist: google-genai>=0.3.0
+Requires-Dist: groq>=0.15.0
+Requires-Dist: langchain-community>=0.3.14
+Requires-Dist: langchain-google-genai>=2.0.8
+Requires-Dist: langchain-openai>=0.3.1
+Requires-Dist: mss>=10.0.0
+Requires-Dist: opencv-python>=4.10.0.84
+Requires-Dist: pillow>=11.1.0
+Requires-Dist: pyaudio>=0.2.14
+Requires-Dist: pygame>=2.6.1
+Requires-Dist: pygetwindow>=0.0.9
+Requires-Dist: pyinstrument>=5.0.0
+Requires-Dist: pyobjc-framework-quartz>=10.3.2
+Requires-Dist: pypdf>=5.1.0
+Requires-Dist: pypdf2>=3.0.1
+Requires-Dist: pytest>=8.3.4
+Requires-Dist: smolagents>=1.1.0
+Requires-Dist: together>=0.2.4
+Requires-Dist: typing-extensions>=4.12.2
+Requires-Dist: uvicorn>=0.34.0
+Requires-Dist: yappi>=1.6.10
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: mkdocs; extra == "test"
+
+# MimicFlow
+
+[![PyPI](https://img.shields.io/pypi/v/mimicflow.svg)](https://pypi.org/project/mimicflow/)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/pritzvi/mimicflow/blob/main/LICENSE)
+
+Automate your LinkedIn networking using an intelligent browser agent. Upload your resume, craft example messages, and let the agent handle the networking while you focus on what matters.
+
+## Features
+
+- **Resume-Based Networking**: Upload your resume and let the agent craft personalized connection messages
+- **Flexible Search**: Find potential connections using LinkedIn search URLs or custom filters
+- **Multiple Modes**: 
+  - Full automation: Connect with personalized messages
+  - Lite mode: Connect without messages
+  - Observer mode: Just collect profile information without connecting
+
+## Project Structure
+
+- `frontend/`: React-based UI code (TypeScript)
+- `mimicflow/agents/`: LinkedIn automation agent code
+- `mimicflow/app/`: FastAPI backend
+- `browser-use/`: Browser automation framework powered by [browser-use](https://browser-use.com/), using LangChain and Playwright. We've modified it for our LinkedIn use case.
+
+## Setup Instructions
+
+1. Create and activate virtual environment:
+```bash
+uv venv --python 3.11
+source .venv/bin/activate
+```
+
+2. Install dependencies:
+```bash
+uv sync
+uv pip install -e ./browser-use
+uv pip install playwright
+playwright install
+```
+
+3. Set up frontend:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+If you encounter frontend setup issues:
+```bash
+rm -rf node_modules
+rm package-lock.json
+npm install
+npm run dev
+```
+
+4. Start the backend (from root directory):
+```bash
+uv run uvicorn mimicflow.app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+5. Set environment variables:
+```bash
+export OPENAI_API_KEY=your_key_here
+export GEMINI_API_KEY=your_key_here
+```
+
+## Usage
+
+1. Make sure you're logged into LinkedIn on Chrome
+2. Completely quit Chrome browser (ensure it's not running in background)
+3. Open `localhost:5173` in a different browser (e.g., Safari)
+4. Configure your automation parameters:
+   - Upload your resume
+   - Set your API keys
+   - Choose connection mode
+   - Enter LinkedIn search URL or filters
+   - Start automation
+
+The frontend runs on port 5173 and the backend on port 8000.
+
+## Development
+
+To contribute to this project:
+1. Fork the repository
+2. Create a new branch for your feature
+3. Submit a pull request
+
+## License
+
+Apache 2.0
