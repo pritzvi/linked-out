@@ -676,7 +676,7 @@ function Home() {
     {resumeSummary && requestsArray.length > 0 && (
       <div className="col-span-2 bg-white rounded-lg shadow-md p-6">
         <h3 className="text-md font-semibold mb-2">
-          LinkedIn Message Template
+          LinkedIn Message Template (Shorten to 200 characters for free accounts, 300 characters for premium accounts)
         </h3>
   
         <div className="mb-6">
